@@ -20,7 +20,7 @@ export default function HomeScreen() {
 
     // fonts
     const [loaded] = useFonts({
-        'Titles': require('../assets/fonts/')
+        Titles: require('../assets/fonts/')
     }) 
 
     if (!loaded) {
