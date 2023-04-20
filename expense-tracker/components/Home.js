@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { useCallback, useEffect, useState } from "react"
 import { useFonts } from 'expo-font'
-
+import { Input} from "@rneui/themed"
 
 const styles = StyleSheet.create({
     container: {
@@ -9,24 +9,22 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
-      h1: {
-        fontSize: "2em",
-        fontFamily: 'Titles'
-      }
     },
   });
 
-export default function HomeScreen() {
 
-    // fonts
+export default function HomeScreen({ route, navigation }) {
+
+    // fonts 
+    /*
     const [loaded] = useFonts({
-        Titles: require('../assets/fonts/')
+        Titles: require('../assets/fonts/Demo_ConeriaScript.ttf')
     }) 
 
     if (!loaded) {
         throw new Error("Font didn't work :(")
     }
-
+    */
 
     // calculate the current date
     function GetCurrentDate() {
@@ -79,14 +77,23 @@ export default function HomeScreen() {
 
         return (
             <View style={styles.container}>
-                <Text><h1 style={{fontFamily: Titles}}>{date} {monthName} {year}</h1></Text>
+                <Text><h1>{date} {monthName} {year}</h1></Text>
             </View>
         )
     }
 
+    // params
+    const params = route.params
+    let budget = params.updatedBudget
+
     return (
-        <View>
+        <View style={styles.container}>
             <GetCurrentDate />
+            <Text>Current Budget: {budget}</Text>
+            <Button
+                title="Set Budget"
+                onPress={() => navigation.navigate("Budget")}
+            />
         </View>
     )
 }

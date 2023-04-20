@@ -6,6 +6,7 @@ import React, { useState } from "react"
 
 // components
 import HomeScreen from "./components/Home.js"
+import BudgetScreen from './components/Budget.js';
 
 
 const Stack = createNativeStackNavigator()
@@ -14,7 +15,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="Home" component={HomeScreen} initialParams={{updatedBudget: 0}}/>
+        <Stack.Screen name="Budget" component={BudgetScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
