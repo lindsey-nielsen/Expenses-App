@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { useCallback, useEffect, useState } from "react"
+import { useFonts } from 'expo-font'
+
 
 const styles = StyleSheet.create({
     container: {
@@ -9,16 +11,25 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       h1: {
         fontSize: "2em",
-        fontFamily: 'Demo_ConeriaScript'
+        fontFamily: 'Titles'
       }
     },
   });
 
 export default function HomeScreen() {
 
-    function GetCurrentDate() {
+    // fonts
+    const [loaded] = useFonts({
+        'Titles': require('../assets/fonts/')
+    }) 
 
-        // calculate the current date
+    if (!loaded) {
+        throw new Error("Font didn't work :(")
+    }
+
+
+    // calculate the current date
+    function GetCurrentDate() {
         let date = new Date().getDate()
         let month = new Date().getMonth() + 1
         let year = new Date().getFullYear()
@@ -68,7 +79,7 @@ export default function HomeScreen() {
 
         return (
             <View style={styles.container}>
-                <Text><h1>{date} {monthName} {year}</h1></Text>
+                <Text><h1 style={{fontFamily: Titles}}>{date} {monthName} {year}</h1></Text>
             </View>
         )
     }
