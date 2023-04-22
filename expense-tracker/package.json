@@ -7,10 +7,13 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "fonts": "expo install expo-font"
+    "fonts": "expo install expo-font",
+    "date": "expo install @react-native-community/datetimepicker"
   },
   "dependencies": {
+    "@cawfree/react-native-simpler-date-picker": "^0.1.0-alpha.4",
     "@expo/webpack-config": "^18.0.1",
+    "@react-native-community/datetimepicker": "6.7.3",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@rneui/themed": "^4.0.0-rc.7",

@@ -7,7 +7,7 @@ import { Input, Button } from "@rneui/themed"
 SplashScreen.preventAutoHideAsync();
 
 export default function HomeScreen({ route, navigation }) {
-  
+
     // load fonts success!!
     const [fontsLoaded] = useFonts({
         'Titles': require('../assets/fonts/Demo_ConeriaScript.ttf'),
@@ -84,20 +84,17 @@ export default function HomeScreen({ route, navigation }) {
         )
     }
 
-    // categories
-    let EXPENSES = [
-        {category: "food", expenses: [{amount: 25.89, date:"4/15/2023", notes:"mcdonalds"}]},
-        {category: "transport", expenses: [{amount: 40.36, date:"4/10/2023", notes:"uber"}]},
-        {category: "rent", expenses: [{amount: 1010.00, date:"4/1/2023", notes:""}]},
-        {category: "utilities", expenses: [{amount: 50.83, date:"4/1/2023", notes:""}]},
-        {category: "clothing", expenses: [{amount: 36.78, date:"4/13/2023", notes:"target"}]},
-        {category: "pet", expenses: [{amount: 5.09, date:"4/19/2023", notes:"cat treats"}]},
-        {category: "subscriptions", expenses: [{amount: 10.00, date:"4/16/2023", notes:"hbo"}]}
-    ]
-
     // params
     const params = route.params
     let budget = params.updatedBudget
+    let EXPENSES = params.infoArray
+    console.log(EXPENSES)
+
+    // display categories
+    function ExpenseHistory() {
+        let sortedExpenses = EXPENSES.sort((p1, p2) => (p1.expenses.date > p2.expenses.date) ? -1 : (p1.expenses.date < p2.expenses.date) ? 1 : 0)
+        console.log(sortedExpenses)
+    }
 
     return (
         <View style={styles.container} onLayout={onLayoutRootView}>
@@ -112,7 +109,7 @@ export default function HomeScreen({ route, navigation }) {
                 />
             </View>
 
-        <Button
+            <Button
                 title="Add Expense"
                 onPress={() => navigation.navigate("Expense", {
                     infoArray: EXPENSES
@@ -120,6 +117,7 @@ export default function HomeScreen({ route, navigation }) {
                 titleStyle={{fontFamily: 'RegBold', fontSize:'1.5em'}}
                 buttonStyle={{width: 150, backgroundColor: "#FEC6DF"}}
             />
+            <ExpenseHistory />
         </View>
     );
 }
