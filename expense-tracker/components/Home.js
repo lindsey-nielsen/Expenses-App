@@ -1,5 +1,5 @@
-import { useCallback } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { useCallback, useState, useEffect } from 'react';
+import { Text, View, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { Input, Button } from "@rneui/themed"
@@ -30,6 +30,7 @@ export default function HomeScreen({ route, navigation }) {
 
     // calculate the current date
     function GetCurrentDate() {
+
         let date = new Date().getDate()
         let month = new Date().getMonth() + 1
         let year = new Date().getFullYear()
@@ -87,13 +88,55 @@ export default function HomeScreen({ route, navigation }) {
     // params
     const params = route.params
     let budget = params.updatedBudget
-    let EXPENSES = params.infoArray
-    console.log(EXPENSES)
+    let expensesData = params.EXPENSES
+    let disabled = params.enableButton
+    let sortDisabled = params.enableSortButton
+
+    console.log(budget)
+
+    // spent and remaining calculations
+    const amountArray = expensesData.map((item) => item.amount)
+    let amountNumbers = amountArray.map(Number)
+    let length = amountNumbers.length
+    let spentAmount = 0
+    if (length === 1) {
+        spentAmount = amountNumbers[0]
+    } else if (length === 0) {
+        spentAmount === 0
+    } else {
+        spentAmount = amountNumbers.reduce((a, b) => {
+            return a + b
+        })
+    }
+
+    if (length > 1) {
+        sortDisabled = false
+    } else {
+        sortDisabled = true
+    }
+
+    spentAmount.toFixed(2)
+    let remaining = budget - spentAmount
+    remaining.toFixed(2)
 
     // display categories
-    function ExpenseHistory() {
-        let sortedExpenses = EXPENSES.sort((p1, p2) => (p1.expenses.date > p2.expenses.date) ? -1 : (p1.expenses.date < p2.expenses.date) ? 1 : 0)
+    function ExpenseHistory () {      
+        let sortedExpenses = expensesData.sort((p1, p2) => (p1.date > p2.date) ? -1 : (p1.date < p2.date) ? 1 : 0)
         console.log(sortedExpenses)
+        return (
+            <SafeAreaView style={styles.container}>
+                <FlatList
+                    data={sortedExpenses}
+                    extraData={sortedExpenses}
+                    renderItem={({item}) => 
+                        <View style={{padding: 10}}>
+                            <Text style={{fontFamily: 'RegBoldItalic', fontSize: '2em'}}>{item.category}</Text>
+                            <Text style={{fontFamily: 'RegBold', fontSize: '1em'}}>{item.date}{'\n'}${item.amount}{'\n'}{item.note}</Text>
+                        </View>
+                    }
+                />
+            </SafeAreaView>
+        ) 
     }
 
     return (
@@ -104,33 +147,59 @@ export default function HomeScreen({ route, navigation }) {
                 <Button
                     title="Set Budget"
                     titleStyle={{fontFamily: 'RegBold', fontSize:'1.5em'}}
-                    onPress={() => navigation.navigate("Budget")}
+                    onPress={() => navigation.navigate("Budget", {
+                        enableButton: disabled, 
+                        updatedBudget: budget
+                    })}
                     buttonStyle={{width: 150, backgroundColor: "#FEC6DF"}}
                 />
             </View>
+            <Text style={{fontFamily: 'RegBold', fontSize: '1.5em'}}>Spent: {spentAmount}</Text>
+            <Text style={{fontFamily: 'RegBold', fontSize: '1.5em', padding: 20}}>Remaining: {remaining}</Text>
 
-            <Button
-                title="Add Expense"
-                onPress={() => navigation.navigate("Expense", {
-                    infoArray: EXPENSES
-                })}
-                titleStyle={{fontFamily: 'RegBold', fontSize:'1.5em'}}
-                buttonStyle={{width: 150, backgroundColor: "#FEC6DF"}}
-            />
+            <View style={styles.format}>
+                <Button
+                    title="Add Expense"
+                    onPress={() => navigation.navigate("Expense", {
+                        EXPENSES: expensesData, 
+                        updatedBudget: budget, 
+                        enableButton: disabled
+                    })}
+                    titleStyle={{fontFamily: 'RegBold', fontSize:'1.5em'}}
+                    buttonStyle={{width: 150, backgroundColor: "#FEC6DF"}}
+                    disabled={disabled}
+                />
+                <View style={{width: 20}}/>
+                <Button
+                    title="Sort Expenses"
+                    onPress={() => navigation.navigate("Sort", {
+                        EXPENSES: expensesData, 
+                        updatedBudget: budget, 
+                        enableButton: disabled
+                    })}
+                    titleStyle={{fontFamily: 'RegBold', fontSize:'1.5em'}}
+                    buttonStyle={{width: 150, backgroundColor: "#FEC6DF"}}
+                    disabled={sortDisabled}
+                />
+            </View>
+            <Text style={{fontFamily: 'Titles', padding: 20, fontSize: '1.5em'}}>Expense History</Text>
             <ExpenseHistory />
+
         </View>
+        
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
+        alignItems: 'center'
     },
     format: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'flex-end',
-        textAlign: 'right'
+        textAlign: 'right', 
+        padding: 20
     },
 });

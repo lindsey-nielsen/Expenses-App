@@ -41,6 +41,7 @@ export default function ExpenseScreen({ route, navigation }) {
 
     // params
     const params = route.params
+    let expensesData = params.EXPENSES
 
     // amount validation
     function validateAmount(value) {
@@ -69,38 +70,36 @@ export default function ExpenseScreen({ route, navigation }) {
     function submit() {
         setSubmitText("Expense Submitted!")
         let newExpense = {
+            category: category,
             amount: amount,
             date: date,
             note: note
         }
+        
+        expensesData.push(newExpense)
 
-        const findCategoryInArray = params.infoArray.find(arr => {
-            if (arr.category === category) {
-                return true
-            }
-            return false
+        navigation.navigate("Home", {
+            EXPENSES: expensesData,
+            updatedBudget: params.updatedBudget, 
+            enableButton: params.enableButton
         })
-        let index = params.infoArray.indexOf(findCategoryInArray)
-        params.infoArray[index].push(newExpense)
     }
 
     function validate() {
         // validate error fields not working try later
-        let allFieldsExist = amount && date && category
-        if (allFieldsExist) {
+        let allFieldsExist = amount && date && category && note
+        let allFieldsValid = !amountError && !dateError
+        if (allFieldsExist && allFieldsValid) {
             setDisabled(false)
-        } else {
-            setDisabled(true)
-        }
+        } 
     }
 
     // categories
-    let categoriesArr = params.infoArray.map(function (obj) {
-        return obj.category
-    })
+    let categoriesArr = ['food and dining', 'rent, utilities, and bills', 'travel', 'pet', 'subscriptions', 'education', 'shopping', 'entertainment', 'health and fitness', 'personal care']
 
     return (
         <View style={styles.container} onLayout={onLayoutRootView}>
+            <Text style={{fontFamily: 'Titles', fontSize: '2em'}}>add expense!</Text>
             <View style={styles.format}>
                 <Text style={{fontFamily: 'Titles'}}>Amount</Text>
                 <Input 
@@ -122,8 +121,6 @@ export default function ExpenseScreen({ route, navigation }) {
                     fontFamily='RegBold'
                     onSelect={(val) => { 
                         validate()
-  
-
                     }}
                 />
             </View>
@@ -143,8 +140,11 @@ export default function ExpenseScreen({ route, navigation }) {
             <View style={styles.format}>
                 <Text style={{fontFamily: 'Titles'}}>Notes </Text>
                 <Input 
-                    placeholder=" Optional"
-                    onChangeText={note => setNote(note)}
+                    placeholder=" Describe Expense"
+                    onChangeText={note => {
+                        setNote(note)
+                        validate()
+                    }}
                     inputStyle={{fontFamily: 'RegBold'}}
                 />
             </View>
@@ -153,15 +153,6 @@ export default function ExpenseScreen({ route, navigation }) {
                 title="Submit"
                 disabled={disabled}
                 onPress={() => submit()}
-                titleStyle={{fontFamily: 'Titles', fontSize:'1.5em'}}
-                buttonStyle={{width: 150, backgroundColor: "#FEC6DF"}}
-            />
-           
-            <Button
-                title="Home"
-                onPress={() => navigation.navigate("Home", {
-                    infoArray: params.infoArray
-                })}
                 titleStyle={{fontFamily: 'Titles', fontSize:'1.5em'}}
                 buttonStyle={{width: 150, backgroundColor: "#FEC6DF"}}
             />

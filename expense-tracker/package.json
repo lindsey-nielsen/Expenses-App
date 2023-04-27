@@ -13,6 +13,7 @@
   "dependencies": {
     "@cawfree/react-native-simpler-date-picker": "^0.1.0-alpha.4",
     "@expo/webpack-config": "^18.0.1",
+    "@react-native-async-storage/async-storage": "^1.18.1",
     "@react-native-community/datetimepicker": "6.7.3",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
