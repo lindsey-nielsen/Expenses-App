@@ -4,6 +4,7 @@ Lindsey Nielsen
 Portfolio 
 
 Idea: Expenses App
+Option 2: New project with three components
 
 Screens
 
