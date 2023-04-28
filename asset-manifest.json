@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.js": "/portfolio/static/js/main.9542ce49.js",
-    "static/js/421.983e9e17.js": "/portfolio/static/js/421.983e9e17.js",
-    "static/media/Demo_ConeriaScript.ttf": "/portfolio/static/media/Demo_ConeriaScript.decf5eb33e3e25df6bef.ttf",
-    "static/media/GatsbyFLF-Italic.ttf": "/portfolio/static/media/GatsbyFLF-Italic.7d8fa36ef34c44d8489c.ttf",
-    "static/media/GatsbyFLF.ttf": "/portfolio/static/media/GatsbyFLF.30d1d23560fffc0e786d.ttf",
-    "static/media/GatsbyFLF-BoldItalic.ttf": "/portfolio/static/media/GatsbyFLF-BoldItalic.7a59ae2a0cc2c11c86e5.ttf",
-    "static/media/GatsbyFLF-Bold.ttf": "/portfolio/static/media/GatsbyFLF-Bold.8bf1657865eec73d6103.ttf",
-    "favicon.ico": "/portfolio/favicon.ico",
-    "index.html": "/portfolio/index.html",
-    "static/media/rocket.png": "/portfolio/static/media/rocket.d2f3bf41d5e4515c39a9.png",
-    "static/media/bell.png": "/portfolio/static/media/bell.cf04af27d6a651c4b904.png",
-    "favicon-32.png": "/portfolio/favicon-32.png",
-    "static/media/star.png": "/portfolio/static/media/star.69c7138684828d68fe5a.png",
-    "static/media/heart.png": "/portfolio/static/media/heart.23b5c2c0eb77d50ff1b4.png",
-    "favicon-16.png": "/portfolio/favicon-16.png",
-    "manifest.json": "/portfolio/manifest.json",
-    "serve.json": "/portfolio/serve.json",
-    "main.9542ce49.js.map": "/portfolio/static/js/main.9542ce49.js.map",
-    "421.983e9e17.js.map": "/portfolio/static/js/421.983e9e17.js.map"
+    "main.js": "/portfolio/expense-tracker/static/js/main.f8161d39.js",
+    "static/js/421.983e9e17.js": "/portfolio/expense-tracker/static/js/421.983e9e17.js",
+    "static/media/Demo_ConeriaScript.ttf": "/portfolio/expense-tracker/static/media/Demo_ConeriaScript.decf5eb33e3e25df6bef.ttf",
+    "static/media/GatsbyFLF-Italic.ttf": "/portfolio/expense-tracker/static/media/GatsbyFLF-Italic.7d8fa36ef34c44d8489c.ttf",
+    "static/media/GatsbyFLF.ttf": "/portfolio/expense-tracker/static/media/GatsbyFLF.30d1d23560fffc0e786d.ttf",
+    "static/media/GatsbyFLF-BoldItalic.ttf": "/portfolio/expense-tracker/static/media/GatsbyFLF-BoldItalic.7a59ae2a0cc2c11c86e5.ttf",
+    "static/media/GatsbyFLF-Bold.ttf": "/portfolio/expense-tracker/static/media/GatsbyFLF-Bold.8bf1657865eec73d6103.ttf",
+    "favicon.ico": "/portfolio/expense-tracker/favicon.ico",
+    "index.html": "/portfolio/expense-tracker/index.html",
+    "static/media/rocket.png": "/portfolio/expense-tracker/static/media/rocket.d2f3bf41d5e4515c39a9.png",
+    "static/media/bell.png": "/portfolio/expense-tracker/static/media/bell.cf04af27d6a651c4b904.png",
+    "favicon-32.png": "/portfolio/expense-tracker/favicon-32.png",
+    "static/media/star.png": "/portfolio/expense-tracker/static/media/star.69c7138684828d68fe5a.png",
+    "static/media/heart.png": "/portfolio/expense-tracker/static/media/heart.23b5c2c0eb77d50ff1b4.png",
+    "favicon-16.png": "/portfolio/expense-tracker/favicon-16.png",
+    "manifest.json": "/portfolio/expense-tracker/manifest.json",
+    "serve.json": "/portfolio/expense-tracker/serve.json",
+    "main.f8161d39.js.map": "/portfolio/expense-tracker/static/js/main.f8161d39.js.map",
+    "421.983e9e17.js.map": "/portfolio/expense-tracker/static/js/421.983e9e17.js.map"
   },
   "entrypoints": [
     "static/js/421.983e9e17.js",
-    "static/js/main.9542ce49.js"
+    "static/js/main.f8161d39.js"
   ]
 }
