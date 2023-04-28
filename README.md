@@ -20,4 +20,10 @@ Expense Data, which includes the amount, category, date, and note
 Budget, which keeps the budget consistent across all screens unless changed at the budget screen
 Enable button, which provides a boolean that can be change to enable or disable buttons depending on certain conditions
 
+Repository Link: https://github.com/lindsey-nielsen/portfolio 
+
+About me:
+Hard-working digital media web design major anticipating graduation in August 2024. Has a passion for creativity and innovation. Background in teamwork, leadership skills, and attention to detail. 
+
+Contact: lindsey.nielsen@comcast,net
 
