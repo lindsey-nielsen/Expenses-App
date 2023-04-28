@@ -67,6 +67,7 @@ export default function ExpenseScreen({ route, navigation }) {
         }
     }
 
+    // adds expense to data array and brings user back to home
     function submit() {
         setSubmitText("Expense Submitted!")
         let newExpense = {
@@ -85,8 +86,8 @@ export default function ExpenseScreen({ route, navigation }) {
         })
     }
 
+    // button is able to be pressed once all fields exist and are valid
     function validate() {
-        // validate error fields not working try later
         let allFieldsExist = amount && date && category && note
         let allFieldsValid = !amountError && !dateError
         if (allFieldsExist && allFieldsValid) {

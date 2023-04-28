@@ -10,9 +10,7 @@ export default function BudgetScreen({ route, navigation }) {
     // variables
     let [disabled, setDisabled] = useState(true)
     let [amountError, setAmountError] = useState("")
-
-    const params = route.params
-    let newBudget = params.updatedBudget
+    let [newBudget, setNewBudget] = useState(0)
 
     // load fonts success!!
     const [fontsLoaded] = useFonts({
@@ -46,11 +44,11 @@ export default function BudgetScreen({ route, navigation }) {
         }
     }
 
+    // enable button validation
     function validate() {
         if (newBudget && !amountError) {
             setDisabled(false)
-        }
-        console.log(newBudget)
+        } 
     }
 
     return (
@@ -59,7 +57,7 @@ export default function BudgetScreen({ route, navigation }) {
             <Input
                 placeholder=" 0.00"
                 onChangeText={budget => {
-                    newBudget = budget
+                    setNewBudget(budget)
                     validateAmount(budget)
                     validate()
                 }}

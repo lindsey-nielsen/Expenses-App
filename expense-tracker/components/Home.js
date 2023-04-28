@@ -92,8 +92,6 @@ export default function HomeScreen({ route, navigation }) {
     let disabled = params.enableButton
     let sortDisabled = params.enableSortButton
 
-    console.log(budget)
-
     // spent and remaining calculations
     const amountArray = expensesData.map((item) => item.amount)
     let amountNumbers = amountArray.map(Number)
@@ -115,9 +113,9 @@ export default function HomeScreen({ route, navigation }) {
         sortDisabled = true
     }
 
-    spentAmount.toFixed(2)
-    let remaining = budget - spentAmount
-    remaining.toFixed(2)
+    let decimalSpentAmount = spentAmount.toFixed(2)
+    let remaining = budget - decimalSpentAmount
+    let decimalRemaining = remaining.toFixed(2)
 
     // display categories
     function ExpenseHistory () {      
@@ -154,8 +152,8 @@ export default function HomeScreen({ route, navigation }) {
                     buttonStyle={{width: 150, backgroundColor: "#FEC6DF"}}
                 />
             </View>
-            <Text style={{fontFamily: 'RegBold', fontSize: '1.5em'}}>Spent: {spentAmount}</Text>
-            <Text style={{fontFamily: 'RegBold', fontSize: '1.5em', padding: 20}}>Remaining: {remaining}</Text>
+            <Text style={{fontFamily: 'RegBold', fontSize: '1.5em'}}>Spent: {decimalSpentAmount}</Text>
+            <Text style={{fontFamily: 'RegBold', fontSize: '1.5em', padding: 20}}>Remaining: {decimalRemaining}</Text>
 
             <View style={styles.format}>
                 <Button

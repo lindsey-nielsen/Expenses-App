@@ -20,7 +20,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} initialParams={{updatedBudget: 0, EXPENSES: [], enableButton: true}}/>
+        <Stack.Screen name="Home" component={HomeScreen} initialParams={{updatedBudget: 0.00, EXPENSES: [], enableButton: true}}/>
         <Stack.Screen name="Budget" component={BudgetScreen}/>
         <Stack.Screen name="Expense" component={ExpenseScreen}/>
         <Stack.Screen name="Sort" component={SortScreen}/>

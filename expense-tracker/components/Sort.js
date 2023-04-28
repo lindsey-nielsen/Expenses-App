@@ -8,6 +8,7 @@ import { SelectList } from 'react-native-dropdown-select-list';
 SplashScreen.preventAutoHideAsync();
 
 export default function SortScreen({ route, navigation }) {
+    // variables
     let [category, setCategory] = useState("")
     let [disabled, setDisabled] = useState(true)
     let [disabled2, setDisabled2] = useState(true)
@@ -34,11 +35,13 @@ export default function SortScreen({ route, navigation }) {
         return null;
     }
 
+    // params
     let params = route.params
     let expensesData = params.EXPENSES
     let categoriesArr = ['food and dining', 'rent, utilities, and bills', 'travel', 'pet', 'subscriptions', 'education', 'shopping', 'entertainment', 'health and fitness', 'personal care']
     let amountArr = ['high', 'low']
 
+    // function that returns category data
     function sortByCategory(req) {
         let arr = expensesData.filter(item => {
             if (item.category === req) {
@@ -67,6 +70,7 @@ export default function SortScreen({ route, navigation }) {
         setSortedData(categoryDisplay)
     }
 
+    // function that returns price data
     function sortByPrice(req) {
         let sortByPrice
         if (req === 'high') {
@@ -95,6 +99,7 @@ export default function SortScreen({ route, navigation }) {
         setSortedData(priceDisplay)
     }
 
+    // validations to enable buttons
     function validateCat() {
         if (category) {
             setDisabled(false)
@@ -150,7 +155,11 @@ export default function SortScreen({ route, navigation }) {
             <Text>{sortedData}</Text>
             <Button 
                 title="Home"
-                onPress={() => navigation.navigate("Home")}
+                onPress={() => navigation.navigate("Home", {
+                    EXPENSES: expensesData,
+                    updatedBudget: params.updatedBudget, 
+                    enableButton: params.enableButton
+                })}
                 titleStyle={{fontFamily: 'Titles', fontSize:'1.5em'}}
                 buttonStyle={{width: 150, backgroundColor: "#FEC6DF"}}
                 />
