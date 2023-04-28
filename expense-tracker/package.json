@@ -1,7 +1,7 @@
 {
   "name": "expense-tracker",
   "version": "1.0.0",
-  "homepage": "http://lindsey-nielsen.github.io/portfolio/expense-tracker",
+  "homepage": "http://lindsey-nielsen.github.io/expense-tracker",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
