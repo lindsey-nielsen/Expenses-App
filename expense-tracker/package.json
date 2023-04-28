@@ -1,6 +1,7 @@
 {
   "name": "expense-tracker",
   "version": "1.0.0",
+  "homepage": "http://lindsey-nielsen.github.io/expense-tracker",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -8,7 +9,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "fonts": "expo install expo-font",
-    "date": "expo install @react-native-community/datetimepicker"
+    "deploy": "gh-pages -d web-build", 
+    "predeploy": "expo export:web"
   },
   "dependencies": {
     "@cawfree/react-native-simpler-date-picker": "^0.1.0-alpha.4",
@@ -32,7 +34,8 @@
     "remove-duplicate": "^1.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0", 
+    "gh-pages": "^5.0.0"
   },
   "private": true
 }
