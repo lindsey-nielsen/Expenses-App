@@ -1,5 +1,5 @@
 {
-  "name": "expense-tracker",
+  "name": "portfolio",
   "version": "1.0.0",
   "homepage": "http://lindsey-nielsen.github.io/portfolio",
   "main": "node_modules/expo/AppEntry.js",
@@ -13,7 +13,6 @@
     "predeploy": "expo export:web"
   },
   "dependencies": {
-    "@cawfree/react-native-simpler-date-picker": "^0.1.0-alpha.4",
     "@expo/webpack-config": "^18.0.1",
     "@react-native-async-storage/async-storage": "^1.18.1",
     "@react-native-community/datetimepicker": "6.7.3",
